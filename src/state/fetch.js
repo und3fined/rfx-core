@@ -1,4 +1,5 @@
-import _ from 'lodash';
+import after from 'lodash.after';
+import isFunction from 'lodash.isfunction';
 
 /**
   Fetch data from components mapping "static fetchData()"
@@ -7,7 +8,7 @@ import _ from 'lodash';
  */
 export function fetchData(store, props) {
   return Promise.all(props.components
-    .filter(component => component && _.isFunction(component.fetchData))
+    .filter(component => component && isFunction(component.fetchData))
     .map(component => component.fetchData({
       store,
       location: props.location,
@@ -24,7 +25,7 @@ export function fetchData(store, props) {
   Used on the client-side.
  */
 export function fetchDataOnLocationMatch(history, routes, match, store) {
-  history.listen(_.after(1, route =>
+  history.listen(after(1, route =>
     match({ routes, location: route.pathname }, (error, redirect, props) =>
       props && fetchData(store, props))));
 }

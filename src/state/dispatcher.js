@@ -1,4 +1,5 @@
-import _ from 'lodash';
+import isFunction from 'lodash.isfunction';
+import isUndefined from 'lodash.isundefined';
 import access from 'safe-access';
 import $store from './store';
 
@@ -15,7 +16,7 @@ function getNSMethodName(str) {
 function getRealClassName(ns, store) {
   const className = getNSClassNamespace(ns);
   const $class = access(store, className);
-  if (_.isUndefined($class)) throw new Error(`The Store ${className} does not exist!`);
+  if (isUndefined($class)) throw new Error(`The Store ${className} does not exist!`);
   return $class.constructor.name;
 }
 
@@ -25,8 +26,8 @@ export function dispatch(namespace, ...opt) {
   const className = getRealClassName(namespace, store);
   const methodName = getNSMethodName(namespace);
 
-  if (_.isFunction(fn)) {
-    const args = _.isArray(opt) ? opt : [opt];
+  if (isFunction(fn)) {
+    const args = Array.isArray(opt) ? opt : [opt];
     return access(store, [namespace, '()'].join(''), args);
   }
 

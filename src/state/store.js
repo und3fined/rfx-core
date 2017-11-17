@@ -1,6 +1,8 @@
 /* eslint no-underscore-dangle: 0 */
 import { action } from 'mobx';
-import _ from 'lodash';
+import isFunction from 'lodash.isfunction';
+import isUndefined from 'lodash.isundefined';
+import isEmpty from 'lodash.isempty';
 
 class Store {
 
@@ -43,7 +45,7 @@ class Store {
         Object.assign($obj, $state);
         this.extendWithNestedClass($obj, $state, $extend);
         this.$stores[key] = $obj;
-        if (_.isFunction($obj.init)) {
+        if (isFunction($obj.init)) {
           $obj.init($state);
         }
       });
@@ -51,7 +53,7 @@ class Store {
 
   @action
   extendWithNestedClass(obj, state, extend = null) {
-    if (_.isUndefined(extend) || _.isEmpty(extend)) return;
+    if (isUndefined(extend) || isEmpty(extend)) return;
 
     Object.keys(extend)
       .forEach((subkey) => {
@@ -63,7 +65,7 @@ class Store {
         Object.assign(obj, { [subkey]: $subobj });
         // recursion for deep nested classes
         this.extendWithNestedClass($subobj, $substate, $subextend);
-        if (_.isFunction($subobj.init)) {
+        if (isFunction($subobj.init)) {
           $subobj.init($substate);
         }
       });
