@@ -4,7 +4,7 @@ import isFunction from 'lodash.isfunction';
 /**
   Fetch data from components mapping "static fetchData()"
   and injecting store, router params and query.
-  Used on the server-side. It returns a Promise.
+  Used on the server-side. It returns a Promise..
  */
 export function fetchData(store, props) {
   return Promise.all(props.components
