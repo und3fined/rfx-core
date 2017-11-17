@@ -46,7 +46,10 @@
   },
   "dependencies": {
     "json-stringify-safe": "5.0.1",
-    "lodash": "4.16.6",
+    "lodash.after": "^4.0.4",
+    "lodash.isempty": "^4.4.0",
+    "lodash.isfunction": "^3.0.8",
+    "lodash.isundefined": "^3.0.1",
     "safe-access": "0.1.0"
   },
   "peerDependencies": {
