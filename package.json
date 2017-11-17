@@ -1,10 +1,10 @@
 {
-  "name": "rfx-core",
+  "name": "und3fined-rfx-core",
   "license": "MIT",
   "version": "0.0.0-semantically-released",
   "author": "Claudio Savino <claudio.savino@me.com> (https://twitter.com/foxhound87)",
   "description": "RFX Core - Collection of core functionalities of RFX Stack",
-  "homepage": "https://www.npmjs.com/package/rfx-core",
+  "homepage": "https://www.npmjs.com/package/und3fined-rfx-core",
   "main": "lib/index.js",
   "scripts": {
     "clean:build": "rimraf lib && rimraf umd",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/foxhound87/rfx-core.git"
+    "url": "https://github.com/und3fined/rfx-core.git"
   },
   "keywords": [],
   "files": [
